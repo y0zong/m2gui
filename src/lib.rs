@@ -1,9 +1,13 @@
-pub mod m2macro;
+extern crate proc_macro;
 
-fn main(){
-    print!("hello");
+mod app;
+mod derive;
+
+use proc_macro::TokenStream;
+#[proc_macro_attribute]
+pub fn m2_main(attr: TokenStream, item: TokenStream) -> TokenStream {
+    derive::m2_main(attr, item)
 }
-
 
 #[cfg(test)]
 mod tests {
